@@ -11,6 +11,8 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('ckeditorWithCustomPlugin')
   ckeditor: ElementRef;
 
+  title: string = 'ckeditorWithCustomPlugin';
+
   editorConfig: CKEditor5.Config = {
     toolbar: [
       'heading',
@@ -24,7 +26,7 @@ export class AppComponent implements AfterViewInit {
   };
 
   ngAfterViewInit(): void {
-    ClassicEditor.create(document.querySelector('#editor'), this.editorConfig)
+    ClassicEditor.create(this.ckeditor.nativeElement, this.editorConfig)
       .then((editor) => {
         console.log('Editor was initialized', editor);
       })
